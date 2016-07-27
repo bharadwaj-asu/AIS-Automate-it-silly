@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://webapp4-qa.asu.edu/" />
+<title>Selenium-idetest1</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Selenium-idetest1</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/uga_admissionsapp/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-name-first</td>
+	<td>abc</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-name-last</td>
+	<td>Xyz</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=form-app-name-suffix</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=form-app-dob-m</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=form-app-dob-m</td>
+	<td>label=October</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=form-app-dob-d</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=form-app-dob-d</td>
+	<td>label=3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-dob-y</td>
+	<td>1993</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{&quot;QA_Test_Automation_Admissions_&quot;+Math.floor(Math.random()*12340)+&quot;@test.asu.edu&quot;;}</td>
+	<td>email</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-email</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-retype-email</td>
+	<td>${email}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-password</td>
+	<td>QAtest123</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=form-app-retype-password</td>
+	<td>QAtest123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=StartMyApplication</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

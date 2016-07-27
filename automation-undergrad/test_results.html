@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+.failed {color: red; background-color: #ffcccc;}
+.passed {color: green; background-color: #ccffcc;}
+.done {color: #404040; background-color: #ccffcc;}
+.comment {color: #404040; background-color: #d0d0d0;}
+body, table { font-family: Verdana, Arial, sans-serif; font-size: 12pt; }
+table { border-collapse: collapse; border: 1px solid #ccc; }
+th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
+#suiteSummaryTable thead { font-size: 14pt; font-weight: 800; }
+.test_case thead { font-size: 14pt; font-weight: 400; }
+</style>
+</head>
+<body>
+<table id="suiteSummaryTable" class="selenium">
+<thead><tr class="failed"><td>Test Suite: ASU-Undergrad-ApplicationSubmission_Test_Suite</td></tr></thead>
+<tbody>
+<tr><td>Test cases: 6 total / <span class="passed">5</span> passed / <span class="failed">1</span> failed</td></tr>
+<tr><td>Commands: 101 total / <span class="passed">100</span> passed / <span class="failed">1</span> failed / <span class="skipped">0</span> skipped</td></tr>
+</tbody></table><br>
+<table id="suiteTable" class="selenium">
+<thead><tr><td>Index of test cases</td></tr></thead>
+<tbody>
+<tr class="passed"><td><a href="#test0">Selenium-idetest1</a></td></tr>
+<tr class="passed"><td><a href="#test1">Selenium-idetest2</a></td></tr>
+<tr class="passed"><td><a href="#test2">Selenium-idetest3</a></td></tr>
+<tr class="passed"><td><a href="#test3">Selenium-idetest4</a></td></tr>
+<tr class="done"><td><a href="#test4">selenium-idetest5</a></td></tr>
+<tr class="failed"><td><a href="#test5">selenium-idetest6</a></td></tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test0"></a><table class="test_case"><thead><tr><td colspan="4">Test case: Selenium-idetest1</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/uga_admissionsapp/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-name-first</td>
+	<td>abc</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-name-last</td>
+	<td>Xyz</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-name-suffix</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-dob-m</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-dob-m</td>
+	<td>label=October</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-dob-d</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-dob-d</td>
+	<td>label=3</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-dob-y</td>
+	<td>1993</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>store</td>
+	<td>javascript{&quot;QA_Test_Automation_Admissions_&quot;+Math.floor(Math.random()*12340)+&quot;@test.asu.edu&quot;;}</td>
+	<td>email</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-email</td>
+	<td>${email}</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-retype-email</td>
+	<td>${email}</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-password</td>
+	<td>QAtest123</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-retype-password</td>
+	<td>QAtest123</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>name=StartMyApplication</td>
+	<td></td>
+	<td>Timed out after 5000ms</td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test1"></a><table class="test_case"><thead><tr><td colspan="4">Test case: Selenium-idetest2</td></tr></thead><tbody><tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application | Step 1 — My Information</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-name-first</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-country</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-country</td>
+	<td>label=United States</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-address-1</td>
+	<td>1255 E University Drive</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-address-2</td>
+	<td>C #236</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-city</td>
+	<td>TEmpe</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-state</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-state</td>
+	<td>label=Arizona</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-zip</td>
+	<td>85281</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=app-US-phone-area-code</td>
+	<td>490</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=app-US-phone</td>
+	<td>1234567</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-gender</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-gender</td>
+	<td>label=Male</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-hispanic-1</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-ethnic-6</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-veteran-status-3</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-citizenship-2</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=no-citizen-citizen-country</td>
+	<td>label=Canada</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//option[@value='CAN'])[3]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=birth-country-citizen-no</td>
+	<td>label=United States</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-visa-1</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-student-at-asu-2</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-parent1-first-name</td>
+	<td>as</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-parent1-last-name</td>
+	<td>adfsf</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-parent1-email</td>
+	<td>as@asdqw.com</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-parent1-relation</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=app-parent1-relation</td>
+	<td>label=Mother</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-parent1-schooling-level</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-parent1-schooling-level</td>
+	<td>label=College or Beyond</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-parent1-attended-asu</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-parent1-attended-asu</td>
+	<td>label=No</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//button[@type='button'])[4]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>name=MyInfoSaveAndContinue</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test2"></a><table class="test_case"><thead><tr><td colspan="4">Test case: Selenium-idetest3</td></tr></thead><tbody><tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application | Step 2 — My Schools</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-school-country</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-school-country</td>
+	<td>label=Canada</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-region-generic</td>
+	<td>dghfghddfj</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-city</td>
+	<td>hgj</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-school-name-text-non-us</td>
+	<td>hgjgj</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-school-graduation-date-m</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-school-graduation-date-m</td>
+	<td>label=October</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>type</td>
+	<td>id=form-app-school-graduation-date-y</td>
+	<td>2007</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>link=Done</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-past-colleges-1</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=app-past-colleges-1</td>
+	<td>label=I have never attended a college or university</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>//input[@value='Save &amp; Continue']</td>
+	<td></td>
+	<td>Timed out after 5000ms</td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test3"></a><table class="test_case"><thead><tr><td colspan="4">Test case: Selenium-idetest4</td></tr></thead><tbody><tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application |Step 3 — Arizona Residency</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=residency-arizona-resident-no</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>//input[@value='Save &amp; Continue']</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test4"></a><table class="test_case"><thead><tr><td colspan="4">Test case: selenium-idetest5</td></tr></thead><tbody><tr class="done">
+	<td>click</td>
+	<td>id=app-degree-type-1</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-degree-type-2</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=app-degree-type-1</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-interests</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>select</td>
+	<td>id=form-app-interests</td>
+	<td>label=Engineering &amp; Technology</td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>css=input.action.search-button</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=form-app-major</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[325]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[325]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[325]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[325]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[325]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[327]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[327]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='terms-for-major'])[327]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='form-app-major'])[189]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>xpath=(//input[@id='form-app-major'])[189]</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>pause</td>
+	<td>6000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=pre-med-interest</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=teacher-cert-interest</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>name=SelectedMajorSaveAndContinue</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test5"></a><table class="test_case"><thead><tr><td colspan="4">Test case: selenium-idetest6</td></tr></thead><tbody><tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application | Step 5 — Review</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=review-checkbox</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="failed">
+	<td>clickAndWait</td>
+	<td>id=review-submit</td>
+	<td></td>
+	<td>Timed out after 5000ms</td>
+</tr>
+<tr class="done">
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application | Pay &amp; Submit</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>click</td>
+	<td>id=payLaterSelection</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>css=input.accept</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertTitle</td>
+	<td>Arizona State University | Undergraduate Application | Application Complete</td>
+	<td></td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+</body></html>

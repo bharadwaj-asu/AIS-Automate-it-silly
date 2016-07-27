@@ -1,0 +1,40 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Selenium" verbose="1" >
+
+  <test name="com.example.tests.SeleniumIdetest1" >
+    <classes>
+      <class name="com.example.tests.SeleniumIdetest1" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.SeleniumIdetest2" >
+    <classes>
+      <class name="com.example.tests.SeleniumIdetest2" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.SeleniumIdetest3" >
+    <classes>
+      <class name="com.example.tests.SeleniumIdetest3" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.SeleniumIdetest4" >
+    <classes>
+      <class name="com.example.tests.SeleniumIdetest4" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.SeleniumIdetest5" >
+    <classes>
+      <class name="com.example.tests.SeleniumIdetest5" />
+    </classes>
+  </test>
+
+  <test name="com.example.tests.SeleniumIdetest6" >
+    <classes>
+      <class name="com.example.tests.SeleniumIdetest6" />
+    </classes>
+  </test>
+
+</suite>

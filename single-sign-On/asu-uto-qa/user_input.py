@@ -11,12 +11,11 @@ class User_input:
 
     def connect_to_url(self):
         x=ASULoginPythonScript()
-        x.test_a_s_u_login_python_script(self.username,self.password,self.url)
+        cookies=x.test_a_s_u_login_python_script(self.username,self.password,self.url)
         print("done")
+        return cookies
 
-y=User_input()
-y.userprofile()
-y.connect_to_url()
+
 
 
 

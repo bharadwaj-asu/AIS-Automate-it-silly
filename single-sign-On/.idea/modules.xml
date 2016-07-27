@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Automate_performance/.idea/Automate_performance.iml" filepath="$PROJECT_DIR$/../Automate_performance/.idea/Automate_performance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DegreeSearch_Automation/.idea/DegreeSearch_Automation.iml" filepath="$PROJECT_DIR$/../DegreeSearch_Automation/.idea/DegreeSearch_Automation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SingleSignOn.iml" filepath="$PROJECT_DIR$/.idea/SingleSignOn.iml" />
+    </modules>
+  </component>
+</project>

@@ -18,17 +18,37 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.common.action_chains import ActionChains
-
+from openpyxl import load_workbook
+from openpyxl import Workbook
+from openpyxl.styles import Color, PatternFill, Font, Border
+from openpyxl.styles import colors
+from openpyxl.cell import Cell
 import unittest, time, re
-
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class webstandards:
-
+    #sheetvalue=writetoxl.io()
+    def io(self,value,cellvalue):
+        self.wb1 = load_workbook("textexample.xlsx")
+        self.cellvalue=cellvalue
+        self.sheet = self.wb1.active
+        self.sheet['A1'+str(self.cellvalue)] = "URL for test"
+        self.sheet['A'+str(self.cellvalue+1)] = "Tests"
+        self.sheet['B'+str(self.cellvalue) ] = value
+        self.sheet['B'+str(self.cellvalue+1)] = "Test-Status"
+        self.sheet['C'+str(self.cellvalue+1)] = "Comments"
+        self.cellvalue+=2
+        self.cellvalue=self.global_header(value)
+        self.wb1.save("textexample.xlsx")
+        return self.cellvalue
     def access_url(self,url):
         self.url=url
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Remote(
+   command_executor='http://127.0.0.1:4444/wd/hub',
+   desired_capabilities=DesiredCapabilities.FIREFOX)
         global driver;
         driver = self.driver
         driver.get(url)
@@ -40,6 +60,8 @@ class webstandards:
         ASU main menu font '''
 
     def global_header(self,url):
+        cellvalue=self.cellvalue
+        sheet=self.sheet
         self.access_url(url)
         directory = webstandardsdirectory()
         directory.asu_headerstandard()
@@ -51,42 +73,75 @@ class webstandards:
         #asu logo
         if(element['width']!=203 or element['height']!=32):
             print "ASU LOGO not according to standard"
-            print str(element['width']) +" "+ str(element['height'])
+            sheet['A'+str(cellvalue)]="global header_logo"
+            print "width and height are incorrect"+str(element['width']) +" "+ str(element['height'])
+            sheet['B'+str(cellvalue)]="fail"
+            sheet['C' + str(cellvalue)] =  "width and height are incorrect"+str(element['width']) +" "+ str(element['height'])
+            cellvalue += 1
+        else:
+            sheet['A' + str(cellvalue)] = "global header_logo"
+            print "global logo pass"
+            sheet['B' + str(cellvalue)] = "pass"
+
+            cellvalue += 1
         #asu_links
         asu_links=driver.find_elements_by_xpath("//a[@target='_top']")
-        for i in asu_links :
+        for i in asu_links:
             if len(str(i.text))>=1:
                 color=i.value_of_css_property("color")
                 if str(color)!=self.linkcolor:
+                    sheet['A' + str(cellvalue)] = "global header_links_header"+i.text
+                    print "links are iuncorrect"
+                    sheet['B' + str(cellvalue)] = "fail"
+                    sheet['C' + str(cellvalue)] = "NOT according to webstandards"+" "+str(color)+" element "+i.text
+                    cellvalue += 1
                     print "NOT according to webstandards"+" "+str(color)+" element "+i.text
+                else:
+                    sheet['A' + str(cellvalue)] = "global header_links_header"+i.text
+                    print "links are correct"
+                    sheet['B' + str(cellvalue)] = "pass"
+                    cellvalue += 1
+                    print "according to webstandards" + " " + str(color) + " element " + i.text
         #asuheader-background
         asu_header=driver.find_element_by_xpath("//div[@id='asu_hdr']")
         asu_header_background=asu_header.value_of_css_property("background-color")
         if str(asu_header_background)!=self.asubackground:
             print "ASU HEADER background is not proper "
+            sheet['A' + str(cellvalue)] = "global header_background "
+            sheet['B' + str(cellvalue)] = "fail"
+            sheet['C'+str(cellvalue)]="global header_background " + str(asu_header_background) +" is incorrect"
+            cellvalue += 1
         #asuMainMenu
-        asu_main_menu=driver.find_elements_by_xpath("//a[@href='#']")
-        print "here"
-        for i in range(1,len(asu_main_menu)-1):
-            asu_mainmenucolor=asu_main_menu[i].value_of_css_property("color")
-            asu_main_menu[i].click()
-            #WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID, "innovation-footer")))
-            hover=ActionChains(driver).move_to_element(asu_main_menu[i]).perform()
-            asu_mainmenucolor_afterclick=asu_main_menu[i].value_of_css_property("color")
-            asu_main_menufontfamily=asu_main_menu[i].value_of_css_property("font-family")
-            asu_main_menufontsize = asu_main_menu[i].value_of_css_property("font-size")
-            asu_main_menufontweight = asu_main_menu[i].value_of_css_property("font-weight")
-            if str(asu_mainmenucolor)!=directory.maninmenucolor:
-                print str(asu_mainmenucolor)+" not according to webstandards "+asu_main_menu[i].text+ " "+directory.maninmenucolor
-            if str(asu_mainmenucolor_afterclick )!= directory.mainmenucolor_click:
-                print str(asu_mainmenucolor_afterclick) +" not according to webstandards "+asu_main_menu[i].text+" "+directory.mainmenucolor_click
-            if  str(asu_main_menufontfamily) != directory.fontmenu:
-                print str(asu_main_menufontfamily) + " not according to webstandards " + asu_main_menu[i].text+" "+directory.fontmenu
-            if str(asu_main_menufontsize)!=directory.fontsize:
-                print str(asu_main_menufontsize) + " not according to webstandards " + asu_main_menu[i].text+" "+directory.fontsize
-            if str(asu_main_menufontweight)!=directory.fontweight:
-                print str(asu_main_menufontweight) + " not according to webstandards " + asu_main_menu[i].text+" "+directory.fontweight
-
+        try:
+            asu_main_menu=driver.find_elements_by_xpath("//a[@href='#']")
+            print "here"
+            for i in range(1,len(asu_main_menu)-1):
+                asu_mainmenucolor=asu_main_menu[i].value_of_css_property("color")
+                asu_main_menu[i].click()
+                WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.TAG_NAME, "footer")))
+                hover=ActionChains(driver).move_to_element(asu_main_menu[i]).perform()
+                asu_mainmenucolor_afterclick=asu_main_menu[i].value_of_css_property("color")
+                asu_main_menufontfamily=asu_main_menu[i].value_of_css_property("font-family")
+                asu_main_menufontsize = asu_main_menu[i].value_of_css_property("font-size")
+                asu_main_menufontweight = asu_main_menu[i].value_of_css_property("font-weight")
+                if str(asu_mainmenucolor)!=directory.maninmenucolor:
+                    print str(asu_mainmenucolor)+" not according to webstandards "+asu_main_menu[i].text+ " "+directory.maninmenucolor
+                if str(asu_mainmenucolor_afterclick )!= directory.mainmenucolor_click:
+                    print str(asu_mainmenucolor_afterclick) +" not according to webstandards "+asu_main_menu[i].text+" "+directory.mainmenucolor_click
+                if  str(asu_main_menufontfamily) != directory.fontmenu:
+                    print str(asu_main_menufontfamily) + " not according to webstandards " + asu_main_menu[i].text+" "+directory.fontmenu
+                if str(asu_main_menufontsize)!=directory.fontsize:
+                    print str(asu_main_menufontsize) + " not according to webstandards " + asu_main_menu[i].text+" "+directory.fontsize
+                if str(asu_main_menufontweight)!=directory.fontweight:
+                    print str(asu_main_menufontweight) + " not according to webstandards " + asu_main_menu[i].text+" "+directory.fontweight
+        except Exception:
+            print "Main Menu was not accessed "
+            sheet['A' + str(cellvalue)] = "global header_Mainmenu "
+            sheet['B' + str(cellvalue)] = "NA"
+            sheet['C' + str(cellvalue)] = "global header_Menu couldn't run"
+            cellvalue += 1
+        #seomobiletittle
+        return cellvalue
         print "*********CHECKING ASU WEB STANDARDS COMPLETED******************"
 
     '''This would check font family on page is according to webstandards'''
@@ -145,10 +200,40 @@ class webstandards:
         print "**********done verifying page standards*********"
         print "done verifying font standards"+" elements verified are"
 
-        #driver.close()
-    def asu_global_footer(self):
-        print"yet to be done"
-x=webstandards()
-url="https://engineering.asu.edu/"
-x.global_header(url)
-x.asu_font_page(url)
+        #driver.close
+
+
+    def asu_global_footer(self,url):
+        self.access_url(url)
+        directory = webstandardsdirectory()
+        directory.asu_footerstandard()
+        asuisno1="https://yourfuture.asu.edu/rankings"
+        copyright="http://www.asu.edu/copyright/"
+        accessibility="http://www.asu.edu/accessibility/"
+        privacy="http://www.asu.edu/privacy/"
+        jobs="http://www.asu.edu/asujobs"
+        emergency="http://www.asu.edu/emergency/"
+        contactasu="http://www.asu.edu/contactasu/"
+        cssstyles=['font-size','font-weight','color','text-align']
+        #asunoinnov=driver.find_element_by_xpath("//a[@href='"+asuisno1+"']")
+        copyrig=driver.find_element_by_xpath("//a[@href='"+copyright+"']")
+        accessible=driver.find_element_by_xpath("//a[@href='"+accessibility+"']")
+        private=driver.find_element_by_xpath("//a[@href='"+privacy+"']")
+        job=driver.find_element_by_xpath("//a[@href='"+jobs+"']")
+        emerge=driver.find_element_by_xpath("//a[@href='"+emergency+"']")
+        contact=driver.find_element_by_xpath("//a[@href='"+contactasu+"']")
+        globalfooter=[copyrig,accessible,private,job,emerge,contact]
+        for i in range(0,len(globalfooter)):
+            cssvalue=globalfooter[i].value_of_css_property("font-size")
+            if str(cssvalue)!=directory.fontsize_footer:
+                print globalfooter[i].text +" "+cssvalue+" "+"is not according to webstandards"
+            cssvalue = globalfooter[i].value_of_css_property("font-weight")
+            if str(cssvalue) != directory.fontweight_footer:
+                print globalfooter[i].text + " " + cssvalue + " " + "is not according to webstandards"
+            cssvalue = globalfooter[i].value_of_css_property("color")
+            if str(cssvalue) != directory.color_footer:
+                print globalfooter[i].text + " " + cssvalue + " " + "is not according to webstandards"
+            cssvalue = globalfooter[i].value_of_css_property("text-align")
+            if str(cssvalue) != directory.textalign_footer:
+                print globalfooter[i].text + " " + cssvalue + " " + "is not according to webstandards"
+

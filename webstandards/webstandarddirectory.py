@@ -36,3 +36,11 @@ class webstandardsdirectory:
     def pagecontent_webstandards(self):
         self.font_family_standard = "Roboto,Helvetica Neue,Helvetica,Arial,sans-serif"
         self.primary_font_family_standard="Roboto"
+
+    def asu_footerstandard(self):
+        #background - color:  # E5E5E5
+        self.fontsize_footer="18px"
+        self.fontweight_footer="400"
+        self.color_footer="rgba(51, 51, 51, 1)"
+        self.color_hover_footer="rgba(102, 102, 102, 1)"
+        self.textalign_footer="left"

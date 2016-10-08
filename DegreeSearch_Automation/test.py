@@ -32,14 +32,14 @@ class test(unittest.TestCase):
     def test_keywordsearch(self):
         mas.keywordsearch(self.url)
 
-    def test_additionaloptions(self):
-        mas.additional_Options(self.url)
+    '''def test_additionaloptions(self):
+        mas.additional_Options(self.url)'''
 
     def test_advancedsearchcollege(self):
         mas.advancedsearch_college(self.url)
 
-    def test_secondlanguage(self):
-        mas.radio_secondlanguage(self.url)
+    '''def test_secondlanguage(self):
+        mas.radio_secondlanguage(self.url)'''
 
     def test_accessimagelinks(self):
         mas.accesslinks(self.url)

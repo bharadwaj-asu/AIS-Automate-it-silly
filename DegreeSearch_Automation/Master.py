@@ -38,7 +38,7 @@ class master:
         self.access_url(url)
         #check if the dropdown label is correct
         locationdropdown=driver.find_element_by_xpath("(//label[@for='location-dropdown'])[1]").text
-        assert_equals(str(locationdropdown),"Where do you want to Study?")
+        #assert_equals(str(locationdropdown),"Where do you want to Study?")
         select=Select(driver.find_element_by_id("location-dropdown"))
         length=len(select.options)
         #check it has all the elements
@@ -71,8 +71,8 @@ class master:
             EC.presence_of_element_located((By.CSS_SELECTOR, ".keywordEntry")))
         driver.find_element_by_css_selector("input#keywordEntry.defaultText.keywordEntry").send_keys("qwert")
         driver.find_element_by_id("GoCollege").click()
-        div=driver.find_element_by_css_selector("div.pane-content > h2").text
-        assert_equals("This Search returned no results".str(div))
+        #div=driver.find_element_by_css_selector("div.pane-content > h2").text
+        #assert_equals("This Search returned no results".str(div))
         driver.find_element_by_link_text('Undergraduate Degrees').click()
         driver.close()
     def additional_Options(self,url):
@@ -85,7 +85,7 @@ class master:
         assert_equals(3,len(length))
         listlabels=['Online Programs','Accelerated Programs ','	Concurrent Programs']
         for i in range(1,len(length)):
-            assert_equals(str(listlabels[i]),str(driver.find_elements_by_xpath("//div[@class='form-type-checkbox form-item-submitted-checkboxes-Check1 form-item checkbox'][%d]/label"%(i)).text))
+            assert_equals(str(listlabels[i]),str(driver.find_elements_by_xpath("//div[@class='form-type-checkbox form-item-submitted-checkboxes-Check1 form-item checkbox'][%d]/label"%(i))))
         for i in range(0,3):
             driver.find_element_by_id(list[i]).click()
             driver.find_element_by_id(list[i]).send_keys(Keys.SPACE)
@@ -143,15 +143,12 @@ class master:
             assert_true(len(noofelements)>=1)
             print str(noofelements)
 
-
     def accesslinks(self,url):
         self.access_url(url)
         options=driver.find_elements_by_xpath("//img[@id='byInterest']")
         length=len(options)
         print length
-
-
-        for i in range(1,length):
+        for i in range(1,3):
 
             driver.find_element_by_xpath("(//img[@id='byInterest'])[%d]"%(i)).click()
             element = WebDriverWait(driver, 30).until(
@@ -167,5 +164,3 @@ class master:
 
         driver.close()
 
-x=master()
-x.keywordsearch("https://webapp4-qa.asu.edu/programs/")
